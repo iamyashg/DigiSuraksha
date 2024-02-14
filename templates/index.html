@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="https://i.ibb.co/wJGggWF/4114.webp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digi Suraksha</title>
+    <link rel="stylesheet" href="static/index.css">
+</head>
+<body>
+    <header>
+        <h1>Digi Suraksha</h1>
+        <a href="/">
+            <img src="https://i.ibb.co/wJGggWF/4114.webp" alt="Logo" height="40px" width="40px">
+        </a>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">HOME</a></li>
+            <li><a href="/about">ABOUT</a></li>
+            <li><a href="/cyberthreats">CYBER THREATS</a></li>
+            <li><a href="/faq">FAQ</a></li>
+        </ul>
+    </nav>
+    <section class="landing-section">
+        <div class="overlay" id="overlay">
+            <div class="loading-spinner"></div>
+            <br>
+            <h2>Analyzing the URL, please wait...</h2>
+        </div>
+        <h2>Secure Your Digital Presence</h2>
+        <br>
+        <p>Digi Suraksha is a platform dedicated to safeguarding users from online threats such as phishing scams, malware, and misinformation. We provide tools and resources to help users stay safe while browsing the internet.</p>
+        <form action="/check_url" method="POST">
+            <div class="search-container">
+                <input type="text" name="url" placeholder="Enter URL">
+                <button type="submit" onclick="showOverlay()">
+                    <img src="https://img.icons8.com/ios/50/ffffff/search--v1.png" alt="Search Icon" height="20px" width="20px">
+                </button>
+            </div>
+        </form>
+    </section>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 DigiSuraksha. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showOverlay() {
+            document.getElementById('overlay').classList.add('active');
+        }
+    </script>
+</body>
+</html>

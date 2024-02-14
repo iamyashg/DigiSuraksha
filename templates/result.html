@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+
+        .result-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .result-container .left-section {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .result-container .center-section {
+            flex: 1;
+            margin: 0 20px;
+        }
+
+        .result-container .right-section {
+            flex: 1;
+        }
+
+        .result-container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .result-container th, .result-container td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .result-container th {
+            background-color: #f2f2f2;
+        }
+
+        .result-container .icon {
+            margin-right: 5px;
+        }
+      
+        .result-container .pie-chart-container {
+            margin-bottom: 20px;
+        }
+
+        .result-container .stats-circle {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 18px;
+        }
+
+        .result-container .malicious {
+            color: red;
+        }
+
+        .result-container .harmless {
+            color: green;
+        }
+
+        .result-container .undetected {
+            color: gray;
+        }
+
+        .result-container .suspicious {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+    </style>
+    <title>DigiSuraksha - Result</title>
+</head>
+<body>
+    <div class="result-container">
+        <div class="left-section">
+            <h2>Result:</h2>
+            <div class="pie-chart-container">
+                <canvas id="pieChart" width="150" height="150"></canvas>
+            </div>
+            <p class="suspicious" style="color: {{ 'red' if is_suspicious else 'green' }}">Is Suspicious: {{ 'Yes' if is_suspicious else 'No' }}</p>
+            <p><strong>🔗 URL:</strong> {{ url }}</p>
+        </div>
+
+        <div class="center-section">
+            <h3>🔐 DigiSuraksha Analysis:</h3>
+            <p><strong>Last Analysis Date:</strong> {{ response_data.attributes.last_analysis_date|default('Null')|timestampformat }}</p>
+            <p><strong>Redirection Chain:</strong></p>
+            <ul>
+                {% for redirect_url in response_data.attributes.redirection_chain %}
+                    <li>{{ redirect_url }}</li>
+                {% endfor %}
+            </ul>
+
+            <p><strong>First Submission Date:</strong> {{ response_data.attributes.first_submission_date|timestampformat }}</p>
+            <p><strong>Last Modification Date:</strong> {{ response_data.attributes.last_modification_date|timestampformat }}</p>
+
+             {% if response_data.attributes.threat_names %}
+                <h4>Threat Names:</h4>
+                  <ul>
+                    {% for threat_name in response_data.attributes.threat_names %}
+                      <li>{{ threat_name }}</li>
+                      {% endfor %}
+                  </ul>
+              {% endif %}
+        </div>
+
+        {% if response_data.attributes.crowdsourced_context %}
+            <div class="right-section">
+                <h3>🌐 Crowdsourced Context:</h3>
+                 {% for context in response_data.attributes.crowdsourced_context %}
+                            <strong>Source:</strong> {{ context.source }}<br><br>
+                            <strong>Title:</strong> {{ context.title }}<br><br>
+                            <strong>Severity:</strong> {{ context.severity }}<br><br>
+                            <strong>Details:</strong> {{ context.details }}<br><br>
+                            <strong>Timestamp:</strong> {{ context.timestamp|timestampformat }}<br><br>
+                    {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="result-container">
+        <h2>Antivirus Results:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Engine</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% set sorted_results = response_data.attributes.last_analysis_results.items() | sort(attribute='1.category') %}
+
+                {% for engine, result in sorted_results %}
+                    <tr>
+                        <td>{{ engine }}</td>
+                        <td>
+                            {% if result.category == 'malicious' %}
+                            <span style="color: red;">
+                              <i class="icon malicious-icon fa-solid fa-circle-exclamation"></i>
+                            </span>
+                            {% elif result.category == 'harmless' %}
+                                <span style="color: green;">
+                                    <i class="icon harmless-icon far fa-check-circle"></i>
+                                </span>       
+                            {% elif result.category == 'undetected' %}
+                                <span style="color: gray;">
+                                    <i class="icon undetected-icon far fa-question-circle"></i>
+                                </span>
+                            {% endif %}
+                            {{ result.result|capitalize }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+  <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          {% if response_data and is_suspicious %}
+              alert('This site is suspicious!');
+          {% endif %}
+
+          {% if response_data and response_data.attributes.last_analysis_stats %}
+              var maliciousPercentage = {{ response_data.attributes.last_analysis_stats.malicious }};
+              var harmlessPercentage = {{ response_data.attributes.last_analysis_stats.harmless }};
+              var undetectedPercentage = {{ response_data.attributes.last_analysis_stats.undetected }};
+
+              var ctx = document.getElementById('pieChart').getContext('2d');
+
+              var data = {
+                  labels: ['Malicious', 'Harmless', 'Undetected'],
+                  datasets: [{
+                      data: [maliciousPercentage, harmlessPercentage, undetectedPercentage],
+                      backgroundColor: ['red', 'green', 'gray'],
+                  }]
+              };
+
+              var options = {
+                  responsive: true,
+                  maintainAspectRatio: false,
+              };
+
+              var pieChart = new Chart(ctx, {
+                  type: 'doughnut',
+                  data: data,
+                  options: options,
+              });
+          {% endif %}
+      });
+  </script>
+</body>
+</html>

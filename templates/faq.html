@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Digi Suraksha</title>
+    <link rel="stylesheet" href="static/faq.css">
+</head>
+<body>
+    <header>
+        <h1>Digi Suraksha</h1>
+        <img src="https://i.ibb.co/wJGggWF/4114.webp" alt="shield_icon" height="60px" width="60px"/>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">HOME</a></li>
+            <li><a href="/about">ABOUT</a></li>
+            <li><a href="/cyberthreats">CYBER THREATS</a></li>
+            <li><a href="/faq">FAQ</a></li>
+        </ul>
+    </nav>
+    <div class="faq">
+        <h1>Frequently Asked Questions</h1>
+    </div>
+    <main>
+        <div class="faq-item">
+            <div class="question">
+                <h2>1. What is Digi Suraksha?</h2>
+                <span class="toggle-arrow">+</span>
+            </div>
+            <div class="answer">
+                <p>Digi Suraksha is a platform dedicated to safeguarding users from online threats such as phishing scams, malware, and misinformation. We provide tools and resources to help users stay safe while browsing the internet.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">
+                <h2>2. How can I use Digi Suraksha to check a link?</h2>
+                <span class="toggle-arrow">+</span>
+            </div>
+            <div class="answer">
+                <p>Simply enter the URL you want to check into the input field on our homepage and click the "Check" button. Our system will analyze the link and provide you with information about its safety status.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">
+                <h2>3. Can Digi Suraksha guarantee 100% protection from online threats?</h2>
+                <span class="toggle-arrow">+</span>
+            </div>
+            <div class="answer">
+                <p>While Digi Suraksha employs advanced techniques to detect and flag potential threats, no system can guarantee complete protection. It's important for users to remain vigilant and adopt safe browsing practices to minimize their risk online.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">
+                <h2>4. Does Digi Suraksha offer any educational resources on cybersecurity?</h2>
+                <span class="toggle-arrow">+</span>
+            </div>
+            <div class="answer">
+                <p>Yes, Digi Suraksha provides educational resources, including blog posts, articles, and guides, to help users learn more about cybersecurity best practices and how to protect themselves online.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">
+                <h2>5. Is Digi Suraksha available in languages other than English?</h2>
+                <span class="toggle-arrow">+</span>
+            </div>
+            <div class="answer">
+                <p>At this time, Digi Suraksha is only available in English. However, we are working to expand our language support in the future to make our services accessible to a wider audience.</p>
+            </div>
+        </div>
+
+
+    </main>
+    <footer>
+        <p>&copy; 2024 Digi Suraksha. All rights reserved.</p>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          const toggleArrows = document.querySelectorAll('.toggle-arrow');
+          toggleArrows.forEach(function(toggleArrow) {
+              toggleArrow.addEventListener('click', function() {
+                  const answer = this.parentElement.nextElementSibling;
+                  answer.classList.toggle('active');
+                  if (answer.classList.contains('active')) {
+                      this.textContent = '-';
+                  } else {
+                      this.textContent = '+';
+                  }
+              });
+          });
+      });
+    </script> 
+</body>
+</html>

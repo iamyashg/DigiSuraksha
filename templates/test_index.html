@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>DigiSuraksha - URL Checker</title>
+</head>
+<body>
+    <div class="container">
+        <h1>DigiSuraksha - URL Checker</h1>
+        <form action="/check_url" method="post">
+            <label for="url">Enter URL:</label>
+            <input type="text" name="url" required>
+            <button type="submit">Check URL</button>
+        </form>
+    </div>
+</body>
+</html>
