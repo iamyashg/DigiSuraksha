@@ -5,8 +5,12 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Arial', sans-serif;
+}
+
 header {
-    background-color: #333;
+    background-color: rgba(0, 0, 0, 0.7);
     color: white;
     padding: 20px;
     display: flex;
@@ -14,15 +18,18 @@ header {
     align-items: center;
 }
 
-nav{
-    background-color: #007bff;
+header img {
+    cursor: pointer;
+}
+
+nav {
+    background-color: rgba(0, 123, 255, 0.8);
+    padding: 10px 0;
 }
 
 nav ul {
     list-style-type: none;
-    padding: 10px 0; 
     margin-left: 20px;
-    
 }
 
 nav ul li {
@@ -30,15 +37,14 @@ nav ul li {
     margin: 0 10px;
 }
 
-nav a{
+nav a {
     text-decoration: none;
     color: white;
     font-weight: bold;
 }
 
-nav a:hover,a:active{
-    font-weight: bolder;
-    text-decoration: solid underline white;
+nav a:hover, a:active {
+    text-decoration: underline;
 }
 
 .faq{
