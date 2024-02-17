@@ -47,6 +47,14 @@ nav a:hover, a:active {
     text-decoration: underline;
 }
 
+.report{
+  text-align: center;
+  background-color: white;
+  color: #333;
+  margin-top: 20px;
+  font-weight: bolder;
+}
+
 h2 {
   text-align: center;
   color: #333;
