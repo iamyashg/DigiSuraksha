@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=h3, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="static/fakewebapps.css" />
+    <title>Report Suspicious Websites</title>
+  </head>
+  <body>
+    <header>
+      <h1>Digi Suraksha</h1>
+      <a href="/">
+        <img
+          src="https://i.ibb.co/wJGggWF/4114.webp"
+          alt="Logo"
+          height="40px"
+          width="40px"
+        />
+      </a>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="/">HOME</a></li>
+        <li><a href="/about">ABOUT</a></li>
+        <li><a href="/cyberthreats">CYBER THREATS</a></li>
+        <li><a href="/faq">FAQ</a></li>
+      </ul>
+    </nav>
+
+    <h2>Community Driven Form for Data Collection of Fake/ Spurious URLs</h2>
+    <form method="POST" name="google-sheet">
+      <fieldset>
+        <legend>Website Information</legend>
+
+        <label for="url">Website URL:</label>
+        <input
+          type="url"
+          id="url"
+          name="Website URL"
+          required
+          placeholder="Enter the URL"
+        />
+
+        <br /><br />
+
+        <label for="category">Category:</label>
+        <select name="Category of Scam" id="category" required>
+          <option value="phishing">Phishing</option>
+          <option value="malware">Malware</option>
+          <option value="fake">Fake News</option>
+          <option value="identity">Identity Theft</option>
+          <option value="finance">Financial Fraud</option>
+          <option value="other">Other</option>
+        </select>
+
+        <br /><br />
+
+        <label for="description">Description:</label>
+        <textarea
+          name="Description"
+          id="description"
+          cols="30"
+          rows="5"
+          required
+          placeholder="Enter what's fishy about the website and how it's a cyberthreat!"
+        >
+        </textarea>
+      </fieldset>
+
+      <br />
+
+      <fieldset>
+        <legend>Your Information</legend>
+
+        <label for="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          name="Submitted By"
+          placeholder="Enter your name"
+        />
+
+        <br /><br />
+
+        <label for="scammed">Have you been scammed by this website?</label>
+        <input
+          type="radio"
+          id="scammedYes"
+          name="Were you scammed?"
+          value="yes"
+        />
+
+        <label for="scammedYes">Yes</label>
+        <input
+          type="radio"
+          id="scammedNo"
+          name="Were you scammed?"
+          value="no"
+        />
+        <label for="scammedNo">No</label>
+      </fieldset>
+
+      <br />
+
+      <fieldset id="terms-box">
+        <legend>Terms and Conditions</legend>
+        <p>
+          <label for="terms" class="term-text"
+            >I agree to the terms of service</label
+          >
+          <input
+            type="checkbox"
+            id="terms"
+            name="Terms & Conditions"
+            required
+          />
+        </p>
+      </fieldset>
+
+      <br />
+
+      <div class="box">
+        <input type="submit" value="Submit" name="submit" />
+      </div>
+    </form>
+
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbzn-3FQ5IzhZ4mdnUGoU6XTHP6RglgBSSqu4vaeuQOAjM4dApE-MKbjQxuGsmXrGHqqNA/exec";
+      const form = document.forms["google-sheet"];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) =>
+            alert("Thanks for contributing and being a Cyber Warrior!")
+          )
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
+  </body>
+</html>
