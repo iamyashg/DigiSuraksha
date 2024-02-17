@@ -53,12 +53,31 @@ nav a:hover,a:active{
   font-weight: bolder;
 }
 
+.ct-flex{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .cyberthreats-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 20px; 
+  max-width: 400px;
+  padding: 20px;
+}
+
+.cyberthreats-box:hover {
+  transform: scale(1.01); 
+  transition: transform 0.3s ease; 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+  border-radius: 8px ;
 }
 
 .cyberthreats-box h3 {
   background-color: #f0f0f0; 
+  font-weight: bolder;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
@@ -66,13 +85,21 @@ nav a:hover,a:active{
 
 .cyberthreats-box p {
   background-color: #ffffff; 
-  padding: 15px; 
+  padding: 20px; 
   border-radius: 8px; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  margin: 15px;
+}
+
+.cyberthreats-box img{
+  margin-top: 10px;
+  max-width: 70px;
+  max-height: 70px;
 }
 
 .container {
   padding: 20px;
+  font-size: large;
 }
 
 .container h1 {
@@ -83,6 +110,9 @@ nav a:hover,a:active{
   margin-top: 20px;
 }
 
+.container p{
+  text-align: center;
+}
 footer {
   background-color: #333;
   color: white;
