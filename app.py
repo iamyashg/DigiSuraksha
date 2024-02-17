@@ -99,6 +99,10 @@ def cyberthreats():
 def faq():
     return render_template('faq.html')
 
+@app.route('/report')
+def report():
+    return render_template('report.html')
+
 @app.route('/check_url', methods=['POST'])
 def check_url():
     raw_url = request.form['url']
