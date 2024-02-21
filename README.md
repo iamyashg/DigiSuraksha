@@ -22,12 +22,16 @@ Digi Suraksha is a web application designed to enhance cybersecurity awareness a
 - **Charts:** Chart.js for visualizing analysis results
 - **Google Sheets:** for collecting and managing reported URLs
 
-## How to Use
+## Usage
+
+Visit the [Digi Suraksha deployed on Render](https://digisuraksha.onrender.com/) to explore the application and analyze URLs.
+
+## Deployment
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/digi-suraksha.git
+   git clone https://github.com/iamyashg/digi-suraksha.git
    ```
 
 2. Install dependencies:
