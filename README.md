@@ -1,10 +1,10 @@
 # Digi Suraksha - Cybersecurity Web Application
 
-## Overview
+## ✨ Overview
 
 Digi Suraksha is a web application designed to enhance cybersecurity awareness and provide users with tools to assess the safety of URLs. The application leverages the VirusTotal API to analyze URLs for potential threats, providing users with insights into the safety of websites they wish to visit.
 
-## Features
+## ✳️ Features
 
 - **URL Analysis:** Users can input a URL, and the application retrieves information about the site's safety by querying the VirusTotal API.
 
@@ -14,7 +14,7 @@ Digi Suraksha is a web application designed to enhance cybersecurity awareness a
 
 - **Reporting Tool:** Users can contribute to the community by reporting suspicious websites through a dedicated form. The submitted data is collected in a Google Sheet for further analysis.
 
-## Technologies Used
+## 👨‍💻 Technologies Used
 
 - **Backend:** Python with Flask web framework
 - **Frontend:** HTML, CSS
@@ -22,11 +22,11 @@ Digi Suraksha is a web application designed to enhance cybersecurity awareness a
 - **Charts:** Chart.js for visualizing analysis results
 - **Google Sheets:** for collecting and managing reported URLs
 
-## Usage
+## 🌐 Usage
 
 Visit the [Digi Suraksha deployed on Render](https://digisuraksha.onrender.com/) to explore the application and analyze URLs.
 
-## Deployment
+## ☁️ Deployment
 
 1. Clone the repository:
 
@@ -47,6 +47,18 @@ Visit the [Digi Suraksha deployed on Render](https://digisuraksha.onrender.com/)
    ```
 
 4. Open your browser and go to [http://localhost:5000](http://localhost:5000) to access Digi Suraksha.
+
+## 📸 Snapshots
+
+### Home Page
+![Home Page](https://github.com/iamyashg/DigiSuraksha/assets/72647281/9fe35971-7d5c-49c6-8619-2492b609636f)
+
+### Results Page
+![Results Page 1](https://github.com/iamyashg/DigiSuraksha/assets/72647281/b6660f1e-f5c4-4598-b359-eed27b7490dd)
+![Results Page 2](https://github.com/iamyashg/DigiSuraksha/assets/72647281/d6b0dd0d-2dfb-4603-aceb-84120dabbee1)
+
+### Report Page
+![Report Page](https://github.com/iamyashg/DigiSuraksha/assets/72647281/3e600f13-d380-4c8d-ab56-35d92114a2d8)
 
 ## Contributing
 
