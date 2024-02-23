@@ -62,7 +62,10 @@ Visit the [Digi Suraksha deployed on Render](https://digisuraksha.onrender.com/)
 
 ## Contribution
 
-- Cybersecurity Threats Page & Report Page Developed by [Vansh Sethi](https://github.com/vanshsethi23)
+### Frontend Part
+- Cybersecurity Threats Page & Report Page Frontend Developed by [Vansh Sethi](https://github.com/vanshsethi23)
+- Rest of the Frontend except Results Page Devloped by [Avani Jain](https://github.com/Avanijain3261)
+
 
 Contributions to Digi Suraksha are welcome! If you find a bug or have a feature request, please open an issue. If you'd like to contribute code, fork the repository and submit a pull request.
 
